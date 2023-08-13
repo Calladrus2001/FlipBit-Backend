@@ -10,6 +10,7 @@ const createUser = async (req, res) => {
       data: user,
     });
   } catch (error) {
+    console.log(error);
     res.status(400).send({
       message: "Error has occured",
       error,
@@ -29,6 +30,7 @@ const login = async (req, res) => {
       data: { user, token },
     });
   } catch (error) {
+    console.log(error)
     res.status(400).send(error);
   }
 };
@@ -42,6 +44,7 @@ const readUser = async (req, res) => {
       data: req.user,
     });
   } catch (error) {
+    console.log(error);
     res.status(400).json({
       status: false,
       message: "Error in fetching Profile",
@@ -59,6 +62,7 @@ const logout = async (req, res) => {
     await req.user.save();
     res.send("User Logged out");
   } catch (error) {
+    console.log(error);
     res.status(500).send("Error in Logging out: ", error);
   }
 };
