@@ -3,12 +3,14 @@ const express = require("express");
 
 const db = require("./db/connection");
 const authRouter = require("./routes/auth");
+const itemRouter = require("./routes/item");
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use("/auth", authRouter);
+app.use("/item", itemRouter);
 
 app.get("/", (req, res) => {
   res.send({
