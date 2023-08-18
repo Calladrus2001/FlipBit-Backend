@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const validator = require("validator");
 const ethUtil = require("ethereumjs-util");
 
 const itemSchema = new mongoose.Schema(
@@ -32,11 +33,21 @@ const itemSchema = new mongoose.Schema(
         message: (props) => `${props.value} is not a valid Ethereum address`,
       },
     },
+    imageUrl: {
+      type: String,
+      validate: {
+        validator: function (value) {
+          return validator.isURL(value, { protocols: ['http', 'https'] });
+        },
+        message: (props) => `${props.value} is not a valid image URL`,
+      },
+    },
   },
   {
-    timestamps: true, // Automatically adds createdAt and updatedAt fields
+    timestamps: true,
   }
 );
+
 
 itemSchema.statics.findBySellerEmail = function (email) {
   return this.find({ sellerEmail: email });
