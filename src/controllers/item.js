@@ -1,4 +1,6 @@
 const Item = require("../models/Item");
+const Categories = require("../db/categories");
+const categories = require("../db/categories");
 
 const createItem = async (req, res) => {
   try {
@@ -76,10 +78,15 @@ const deleteItemById = async (req, res) => {
   }
 };
 
+const fetchCategories = async (req, res) => {
+  res.status(201).send(categories);
+}
+
 module.exports = {
   createItem,
   getAllItems,
   getItemById,
   updateItemById,
   deleteItemById,
+  fetchCategories,
 };
