@@ -1,6 +1,5 @@
 const Item = require("../models/Item");
-const Categories = require("../db/categories");
-const categories = require("../db/categories");
+const {brands, categories} = require("../db/data");
 
 const createItem = async (req, res) => {
   try {
@@ -82,6 +81,10 @@ const fetchCategories = async (req, res) => {
   res.status(201).send(categories);
 }
 
+const fetchBrands = async (req, res) => {
+  res.status(201).send(brands);
+};
+
 module.exports = {
   createItem,
   getAllItems,
@@ -89,4 +92,5 @@ module.exports = {
   updateItemById,
   deleteItemById,
   fetchCategories,
+  fetchBrands
 };

@@ -9,5 +9,6 @@ router.get("/getItemById/:id", itemController.getItemById);
 router.patch("/updateItemById/:id", auth, itemController.updateItemById);
 router.delete("/deleteItemById", auth, itemController.deleteItemById);
 router.get("/fetchCategories", itemController.fetchCategories);
+router.get("/fetchBrands", itemController.fetchBrands);
 
 module.exports = router;
