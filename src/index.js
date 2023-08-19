@@ -11,11 +11,13 @@ const port = process.env.PORT || 3000;
 
 const corsOptions = {
   origin: "*",
-  credentials: true, 
-  optionSuccessStatus: 200,
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  preflightContinue: false,
+  optionsSuccessStatus: 200,
 };
 
 app.use(cors(corsOptions));
+
 app.use(express.json());
 app.use("/auth", authRouter);
 app.use("/item", itemRouter);
